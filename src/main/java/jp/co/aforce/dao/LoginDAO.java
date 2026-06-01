@@ -30,6 +30,7 @@ public class LoginDAO extends DAO {
 			user.setLastName(rs.getString("LAST_NAME"));
 			user.setAddress(rs.getString("ADDRESS"));
 			user.setMailAddress(rs.getString("MAIL_ADDRESS"));
+			user.setRole(rs.getString("ROLE"));
 		}
 		
 		st.close();

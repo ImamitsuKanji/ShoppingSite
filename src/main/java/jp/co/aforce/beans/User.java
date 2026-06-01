@@ -7,8 +7,12 @@ public class User implements java.io.Serializable{
 	private String firstName;
 	private String address;
 	private String mailAddress;
+	private String role;
 	
 	
+	public String getRole() {
+		return role;
+	}
 	public String getId() {
 		return id;
 	}
@@ -26,6 +30,11 @@ public class User implements java.io.Serializable{
 	}
 	public String getMailAddress() {
 		return mailAddress;
+	}
+
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 	public void setId(String id) {
 		this.id = id;
@@ -45,6 +54,5 @@ public class User implements java.io.Serializable{
 	public void setMailAddress(String mailAddress) {
 		this.mailAddress = mailAddress;
 	}
-	
 	
 }
