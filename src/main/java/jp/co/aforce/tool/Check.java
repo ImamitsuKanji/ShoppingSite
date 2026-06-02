@@ -8,26 +8,39 @@ public class Check {
 		return id.matches("\\d+");
 	}
 	
-	public static String showCheckResult(String id, User user) {		
-		String message = null;
+	public static String loginCheckResult(String id, User user, String userId) {		
 		
 		if(!IDcheck(id)) {
-			message= "IDが間違っています。ID番号を入力してください";
-			return message;
+			return "IDが間違っています。ID番号を入力してください";
 		}
 		
 		if (user == null) {
-			message= "IDもしくはパスワードが違います。";
-			return message;
+			return "IDもしくはパスワードが違います。";
 		} 
 		
-		if(LoginManager.isLoggedIn(id)) {
-			message= "このアカウントは既にログイン中です";
-			return message;
+		if(LoginManager.isLoggedIn(userId)) {
+			return "このアカウントは既にログイン中です";
 		}
-		return message;
+		return null;
 		
 	}
 	
+	public static String logoutCheckResult(User user) {
+		
+		if(user == null) {
+			return "このアカウントは既にログアウトされています";
+		}
+		
+		return null;
+	}
 	
+	public static String isSqlDirty(int line) {
+		
+
+		if(line>0) {
+			return null;
+		}
+		
+		return "失敗しました";
+	}
 }

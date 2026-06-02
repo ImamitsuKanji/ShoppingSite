@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpSession;
 
 import jp.co.aforce.beans.User;
 import jp.co.aforce.tool.Action;
+import jp.co.aforce.tool.Check;
 import jp.co.aforce.tool.LoginManager;
 
 public class LogoutAction extends Action {
@@ -19,14 +20,18 @@ public class LogoutAction extends Action {
 			if (user != null) {
 				LoginManager.logout(user.getId());
 			}
-		}
-		
-		session.invalidate();
 
-		if (session.getAttribute("user") != null) {
-			return "logout/logout-out.jsp";
+			session.invalidate();
+
+			String checkResult = Check.logoutCheckResult(user);
+			System.out.println("チェック");
+
+			if (checkResult != null) {
+				session.setAttribute("message", checkResult);
+				return "error/login-error.jsp";
+			}
 		}
 
-		return "logout/logout-error.jsp";
+		return "logout/logout-out.jsp";
 	}
 }

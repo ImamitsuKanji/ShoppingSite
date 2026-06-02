@@ -10,7 +10,9 @@
 <!--修正ボタン（仮）-->
 	<input type="submit" value="修正">
 <!--削除ボタン（仮）-->
-	<input type="submit" value="削除">
+	<form action="${pageContext.request.contextPath}/views/delete/delete-input.jsp" method="post">
+		<input type="submit" value="削除">
+	</form>
 <!--	ログアウトボタン-->
 	<form action="${pageContext.request.contextPath}/views/logout/logout-in.jsp" method="post">
 		<input type="submit" value="ログアウト">

@@ -22,7 +22,10 @@
 			<input type="submit" value="ログイン" class="btn">
 		</form>
 
-		<input type="submit" value="新規会員登録" class="btn">
+		<form action="
+		${pageContext.request.contextPath}/views/signup/signup-input.jsp" method="post">
+			<input type="submit" value="新規会員登録" class="btn">
+		</form>
 	</div>
 
 <style><%@include file="/views/css/login.css" %></style>

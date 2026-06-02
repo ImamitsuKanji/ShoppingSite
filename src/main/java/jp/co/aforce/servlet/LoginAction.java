@@ -22,17 +22,18 @@ public class LoginAction extends Action {
 		String password = request.getParameter("password");
 
 		User user = dao.userSearch(id, password);
-		String usrId= user.getId();
+		String userId= user.getId();
 		String role= user.getRole();
-		LoginManager.login(usrId, session.getId());
 		
-		String checkResult = Check.showCheckResult(id, user);
+		String checkResult = Check.loginCheckResult(id, user, userId);
 		System.out.println("チェック");
+		
+		LoginManager.login(userId, session.getId());
 		
 
 		if (checkResult != null) {
 			session.setAttribute("message", checkResult);
-			return "/login/login-error.jsp";
+			return "/error/login-error.jsp";
 		}else {
 			session.removeAttribute("message");
 			session.setAttribute("user", user);

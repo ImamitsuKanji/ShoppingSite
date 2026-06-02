@@ -6,8 +6,7 @@
 </jsp:include>
 
 <p>ログアウトしました</p>
-<input type="button" value="ログイン画面へ戻る"
-		onclick="location.href=
-				'${pageContext.request.contextPath}/views/login/login-in.jsp'">
+<meta http-equiv="refresh" content="3;URL=
+	<%= request.getContextPath() %>/views/login/login-in.jsp">
 
 <%@ include file="/tool/footer.html"%>
