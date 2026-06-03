@@ -5,9 +5,9 @@
 </jsp:include>
 
 <form action="
-${pageContext.request.contextPath}/delete/DeleteUserSerch.action" method="post">
+${pageContext.request.contextPath}/update/DeleteUserSerch.action" method="post">
 	
-	<p>ID:<input type="text" name="id" required></p>
+	<p>名前:<input type="text" name="lastname" value="${userlastname}" required></p>
 	
 	<input type="submit" value="検索">
 	<input type="button" value="戻る" onclick="location.href=

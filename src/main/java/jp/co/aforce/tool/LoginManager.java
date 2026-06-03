@@ -6,16 +6,16 @@ public class LoginManager {
 	private static final ConcurrentHashMap<String, String> loginUsers =
 			new ConcurrentHashMap<>();
 	
-	public static boolean  isLoggedIn(String userId) {
-		return loginUsers.containsKey(userId);
+	public static boolean  isLoggedIn(String id) {
+		return loginUsers.containsKey(id);
 	}
 	
-	public static void login(String userId, String sessionId) {
-		loginUsers.put(userId, sessionId);
+	public static void login(String id, String sessionId) {
+		loginUsers.put(id, sessionId);
 	}
 	
-	public static void logout(String userId) {
-		loginUsers.remove(userId);
+	public static void logout(String id) {
+		loginUsers.remove(id);
 	}
 
 }

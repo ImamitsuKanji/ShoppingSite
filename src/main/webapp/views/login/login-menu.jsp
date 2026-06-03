@@ -10,7 +10,18 @@
 <!--修正ボタン（仮）-->
 	<input type="submit" value="修正">
 <!--削除ボタン（仮）-->
-	<form action="${pageContext.request.contextPath}/views/delete/delete-input.jsp" method="post">
+<!--<%-->
+<!--String role= request.getParameter("role");-->
+<!--String url;-->
+<!--if(role.equals(admin)){-->
+<!--	url= "/views/delete/delete-input.jsp";-->
+<!--}else{-->
+<!--	url= "/views/delete/delete-check.jsp";-->
+<!--}-->
+<!--%>-->
+
+	<form action="${pageContext.request.contextPath}/delete/DeleteUserSerch.action" method="post">
+		<input type="hidden" name="lastname" value="${user.lastname}">
 		<input type="submit" value="削除">
 	</form>
 <!--	ログアウトボタン-->

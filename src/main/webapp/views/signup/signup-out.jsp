@@ -5,10 +5,10 @@
 	<jsp:param value="登録完了" name="title"/>
 </jsp:include>
 
-<%-- <p>登録完了しました</p>
-<form action="${pageContext.request.contextPath}/Login.action" method="post">
+<p>登録完了しました</p>
+<form action="${pageContext.request.contextPath}/views/login/login-menu.jsp" method="post">
 	<input type="submit" value="メニュー">
-</form> --%>
+</form>
 
 <form action="${pageContext.request.contextPath}/views/login/login-in.jsp" method="post">
 	<input type="submit" value="ログイン">

@@ -17,12 +17,6 @@ public class LogoutAction extends Action {
 		if (session != null) {
 			User user = (User) session.getAttribute("user");
 
-			if (user != null) {
-				LoginManager.logout(user.getId());
-			}
-
-			session.invalidate();
-
 			String checkResult = Check.logoutCheckResult(user);
 			System.out.println("チェック");
 
@@ -30,6 +24,12 @@ public class LogoutAction extends Action {
 				session.setAttribute("message", checkResult);
 				return "error/login-error.jsp";
 			}
+
+			if (user != null) {
+				LoginManager.logout(user.getId());
+			}
+
+			session.invalidate();
 		}
 
 		return "logout/logout-out.jsp";

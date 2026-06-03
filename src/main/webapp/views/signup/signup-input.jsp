@@ -7,7 +7,6 @@
 <form action="
 ${pageContext.request.contextPath}/Signup.action" method="get">
 	
-	<p>ID:<input type="text" name="id" required></p>
 	<p>パスワード:<input type="text" name="password" required></p>
 	<p>メールアドレス:<input type="text" name="mail" required></p>
 	<p>名前:<input type="text" name="lastname" required></p>
