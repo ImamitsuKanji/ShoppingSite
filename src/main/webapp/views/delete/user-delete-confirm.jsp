@@ -7,18 +7,19 @@
 </jsp:include>
 
 <!--削除ボタン-->
-<p>${user.id}を削除してもよろしいすか？</p>
-<form action="${pageContext.request.contextPath}/editing/Editing.action" method="post">
+<p>削除してもよろしいすか？</p>
 
-	<input type="hidden" name="lastname" value="${user.lastname}">
+<p>${userBean.firstName}${userBean.lastName}さん</p>
+
+<form action="${pageContext.request.contextPath}/UserDeleteServlet" method="post">
+
+	<input type="hidden" name="id" value="${user.id}">
 	<input type="submit" value="削除" class="delete">
 </form>
 
 <!--戻るボタン-->
 
-<input type="button" value="入力画面"
-		onclick="location.href=
-				'${pageContext.request.contextPath}/views/login/login-menu.jsp'">
+<ahref=${pageContext.request.contextPath}/views/login/login-menu.jsp"></a>
 
 <!--<input type="button" value="入力画面"-->
 <!--		onclick="location.href=-->

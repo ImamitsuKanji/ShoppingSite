@@ -4,11 +4,11 @@
 <%@ page import="jp.co.aforce.beans.User"%>
 
 <%
-User user = (User) session.getAttribute("user");
+UserBean userBean = (UserBean) session.getAttribute("userBean");
 
-if (user != null) {
+if (userBean != null) {
 %>
-<p>ようこそ、${user.lastName}さん！</p>
+<p>ようこそ、${userBean.lastName}さん！</p>
 <%
 } else {
 %>

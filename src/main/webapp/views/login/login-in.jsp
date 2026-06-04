@@ -6,8 +6,9 @@
 <!--    <c:redirect url="login-menu.jsp" />-->
 <!--</c:if>-->
 
+
 <jsp:include page="/tool/header.jsp">
-	<jsp:param value="ログイン" name="title"/>
+	<jsp:param name="title" value="ログイン"/>
 </jsp:include>
 
 	<div class="contents">
@@ -23,7 +24,7 @@
 		</form>
 
 		<form action="
-		${pageContext.request.contextPath}/views/signup/signup-input.jsp" method="post">
+		${pageContext.request.contextPath}/views/signup/user-add.jsp" method="post">
 			<input type="submit" value="新規会員登録" class="btn">
 		</form>
 	</div>

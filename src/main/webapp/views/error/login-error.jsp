@@ -6,7 +6,7 @@
 </jsp:include>
 
 <div class="error">
-	<p style="color: red;" class="errortext">${sessionScope.message}</p>
+	<p style="color: red;" class="errortext">${errormessage}</p>
 	<input type="button" value="ログイン画面へ戻る"
 		onclick="location.href=
 				'${pageContext.request.contextPath}/views/login/login-in.jsp'">

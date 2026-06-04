@@ -1,6 +1,6 @@
 package jp.co.aforce.beans;
 
-public class User implements java.io.Serializable{
+public class UserBean implements java.io.Serializable{
 	private String id;
 	private String password;
 	private String lastName;
