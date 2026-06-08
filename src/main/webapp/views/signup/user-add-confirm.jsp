@@ -3,21 +3,44 @@
 <jsp:include page="/tool/header.jsp">
 	<jsp:param value="新規登録" name="title" />
 </jsp:include>
+
+</head>
+<body>
+
 <P>登録する内容はよろしかったですか？</P>
 
 <form action="
-${pageContext.request.contextPath}/UserAddConfirm.action" method="get">
-	
-	<p>ユーザーID:<input type="text" name="userID" required></p>
-	<p>パスワード：<input type="text" name="password" required></p>
-	<p>名前(姓):<input type="text" name="firstName" required></p>
-	<p>名前(名):<input type="text" name="lastName" required></p>
-	<p>住所:<input type="text" name="address" required></p>
-	<p>メールアドレス:<input type="text" name="mailaddress" required></p>
-	
+${pageContext.request.contextPath}/UserAdd.action"
+	method="post">
+
+	<p>
+		ユーザーID:<input type="text" name="id" value="${updateBean.id}"
+			required>
+	</p>
+	<p>
+		パスワード：<input type="text" name="password" value="${updateBean.password}"
+			required>
+	</p>
+	<p>
+		名前(姓):<input type="text" name="firstName"
+			value="${updateBean.firstName}" required>
+	</p>
+	<p>
+		名前(名):<input type="text" name="lastName" value="${updateBean.lastName}"
+			required>
+	</p>
+	<p>
+		住所:<input type="text" name="address" value="${updateBean.address}"
+			required>
+	</p>
+	<p>
+		メールアドレス:<input type="text" name="mailaddress"
+			value="${updateBean.mailAddress}" required>
+	</p>
+
 	<input type="submit" value="登録">
 </form>
 
-<a href="${pageContext.request.contextPath}/views/sigmup/user-add.jsp">戻る</a>
+<a href="${pageContext.request.contextPath}/views/signup/user-add.jsp">戻る</a>
 
 <%@ include file="/tool/footer.html"%>

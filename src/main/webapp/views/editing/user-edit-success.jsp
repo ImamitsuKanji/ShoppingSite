@@ -5,8 +5,11 @@
 	<jsp:param value="編集完了" name="title"/>
 </jsp:include>
 
+</head>
+<body>
+
 <p>変更完了いたしました</p>
 <meta http-equiv="refresh" content="3;URL=
-	${pageContext.request.contextPath}/views/login/login-in.jsp">
+	${pageContext.request.contextPath}/views/login/user-in.jsp">
 
 <%@ include file="/tool/footer.html"%>

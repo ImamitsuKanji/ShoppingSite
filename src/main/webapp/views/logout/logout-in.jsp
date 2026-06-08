@@ -6,6 +6,9 @@
 	<jsp:param value="ログアウト確認" name="title"/>
 </jsp:include>
 
+</head>
+<body>
+
 <!--ログアウトボタン-->
 <p>ログアウトしますか</p>
 <form action="${pageContext.request.contextPath}/Logout.action" method="post">

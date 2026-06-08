@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpSession;
 import jp.co.aforce.beans.UserBean;
 import jp.co.aforce.dao.UserDAO;
 import jp.co.aforce.tool.Action;
+import jp.co.aforce.tool.LoginManager;
 
 public class UserEditAction extends Action {
 
@@ -22,32 +23,44 @@ public class UserEditAction extends Action {
 			return "error/session-error.jsp";
 		}
 
-		// 更新用userBean取得
-		UserBean updateUserBean = (UserBean) session.getAttribute("updateUserBean");
+		UserBean user = (UserBean) session.getAttribute(
+				"updateUserBean");
 
+		if (user == null) {
+			return "error/session-error.jsp";
+		}
+
+		UserDAO dao = new UserDAO();
 		// 更新処理
-		boolean result = UserDAO.updateUser(updateUserBean);
+		boolean result = dao.updateUser(user);
 
 		// 更新失敗
 		if (!result) {
 
-			request.setAttribute(
-					"errMessage",
-					"更新エラー");
+			session.setAttribute(
+					"user",
+					user);
+			;
+
+			if (session != null) {
+				session.invalidate();
+			}
+
+			LoginManager.logout(user.getId());
 
 			return "error/login-error.jsp";
 		}
 
-		// userBeanセッション更新
+		// ログインユーザー情報更新
 		session.setAttribute(
-				"userBean",
-				updateUserBean);
+				"user",
+				user);
 
 		// 更新用セッション削除
 		session.removeAttribute(
 				"updateUserBean");
 
 		// 完了画面
-		return "signup/user-edit-success.jsp";
+		return "editing/user-edit-success.jsp";
 	}
 }

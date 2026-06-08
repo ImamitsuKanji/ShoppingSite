@@ -5,7 +5,10 @@
 	<jsp:param value="登録完了" name="title"/>
 </jsp:include>
 
+</head>
+<body>
+
 <p>新規登録完了</p>
-a href="${pageContext.request.contextPath}/views/login/login-in.jsp">ログイン画面へ戻る</a>
+<a href="${pageContext.request.contextPath}/views/login/login-in.jsp">ログイン画面へ戻る</a>
 
 <%@ include file="/tool/footer.html"%>

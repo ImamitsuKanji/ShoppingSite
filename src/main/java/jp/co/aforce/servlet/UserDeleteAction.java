@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpSession;
 import jp.co.aforce.beans.UserBean;
 import jp.co.aforce.dao.UserDAO;
 import jp.co.aforce.tool.Action;
+import jp.co.aforce.tool.LoginManager;
 
 public class UserDeleteAction extends Action {
 
@@ -14,15 +15,16 @@ public class UserDeleteAction extends Action {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 
-		if (session != null) {
+		if (session == null) {
 			return "error/session-error.jsp";
 		}
 
 		// セッションから取得
-		UserBean userBean = (UserBean) session.getAttribute("userBean");
+		UserBean user = (UserBean) session.getAttribute("user");
 
+		UserDAO dao = new UserDAO();
 		// 削除処理
-		boolean result = UserDAO.deleteUser(userBean);
+		boolean result = dao.deleteUser(user);
 
 		// 削除失敗
 		if (!result) {
@@ -30,6 +32,12 @@ public class UserDeleteAction extends Action {
 			request.setAttribute(
 					"errMessage",
 					"削除エラー");
+
+			if (session != null) {
+				session.invalidate();
+			}
+			
+			LoginManager.logout(user.getId());
 
 			return "error/login-error.jsp";
 		}

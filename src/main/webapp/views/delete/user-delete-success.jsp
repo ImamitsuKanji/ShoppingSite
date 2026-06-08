@@ -5,6 +5,9 @@
 	<jsp:param value="削除完了" name="title"/>
 </jsp:include>
 
+</head>
+<body>
+
 <p>削除しました</p>
 <meta http-equiv="refresh" content="3;URL=
 	<%= request.getContextPath() %>/views/login/login-in.jsp">

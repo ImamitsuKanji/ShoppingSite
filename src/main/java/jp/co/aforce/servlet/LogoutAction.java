@@ -5,7 +5,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import jp.co.aforce.beans.UserBean;
-import jp.co.aforce.dao.UserDAO;
 import jp.co.aforce.tool.Action;
 import jp.co.aforce.tool.LoginManager;
 
@@ -15,17 +14,13 @@ public class LogoutAction extends Action {
 		HttpSession session = request.getSession(false);
 
 		if (session != null) {
+		    session.invalidate();
+		}
+
+		response.sendRedirect("login.jsp");
+
+		if (session != null) {
 			UserBean user = (UserBean) session.getAttribute("user");
-
-			Boolean checkResult = UserDAO.UserCheck(user);
-			System.out.println("チェック");
-
-			if (checkResult != false) {
-				if (session != null) {
-					session.invalidate();
-				}
-				return "error/login-error.jsp";
-			}
 
 			if (user != null) {
 				LoginManager.logout(user.getId());

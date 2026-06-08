@@ -5,6 +5,9 @@
 	<jsp:param value="ログアウト" name="title"/>
 </jsp:include>
 
+</head>
+<body>
+
 <p>ログアウトしました</p>
 <meta http-equiv="refresh" content="3;URL=
 	<%= request.getContextPath() %>/views/login/login-in.jsp">
