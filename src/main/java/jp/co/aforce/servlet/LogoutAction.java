@@ -14,12 +14,6 @@ public class LogoutAction extends Action {
 		HttpSession session = request.getSession(false);
 
 		if (session != null) {
-		    session.invalidate();
-		}
-
-		response.sendRedirect("login.jsp");
-
-		if (session != null) {
 			UserBean user = (UserBean) session.getAttribute("user");
 
 			if (user != null) {
@@ -28,6 +22,7 @@ public class LogoutAction extends Action {
 			session.invalidate();
 		}
 
-		return "logout/user-logout.jsp";
+		response.sendRedirect("views/logout/user-logout.jsp");
+		return null;
 	}
 }

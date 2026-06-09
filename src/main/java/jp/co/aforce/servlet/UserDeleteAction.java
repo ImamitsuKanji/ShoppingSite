@@ -29,9 +29,7 @@ public class UserDeleteAction extends Action {
 		// 削除失敗
 		if (!result) {
 
-			request.setAttribute(
-					"errMessage",
-					"削除エラー");
+			request.setAttribute("errMessage","削除エラー");
 
 			if (session != null) {
 				session.invalidate();
@@ -46,7 +44,7 @@ public class UserDeleteAction extends Action {
 		session.invalidate();
 
 		// 完了画面
-		return "signup/user-delete-success.jsp";
+		return "delete/user-delete-success.jsp";
 
 	}
 

@@ -11,7 +11,7 @@
 		<p>ログアウトしますか？</p>
 
 		<form action="${pageContext.request.contextPath}
-						/views/logout/logout-in.jsp"method="post">
+						/Logout.action "method="post">
 
 			<input type="submit" value="ログアウト" class="logout-btn">
 

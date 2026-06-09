@@ -44,7 +44,7 @@ public class UserAddConfirmAction extends Action {
 			UserDAO dao = new UserDAO();
 
 			boolean existsUser = dao.existsUser(userId);
-			boolean halfWidth = dao.isHalfWidth(userId, password);
+			boolean halfWidth = dao.isHalfWidth(userId);
 
 			// 既に登録済み
 			if (existsUser) {

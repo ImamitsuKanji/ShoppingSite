@@ -10,6 +10,6 @@
 
 <p>変更完了いたしました</p>
 <meta http-equiv="refresh" content="3;URL=
-	${pageContext.request.contextPath}/views/login/user-in.jsp">
+	${pageContext.request.contextPath}/views/login/user-menu.jsp">
 
 <%@ include file="/tool/footer.html"%>

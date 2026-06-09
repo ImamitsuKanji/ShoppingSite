@@ -31,6 +31,7 @@ public class UserAddAction extends Action {
 
 		// Beanなし
 		if (userBean == null) {
+			 session.invalidate();
 			return "error/session-error.jsp";
 		}
 
@@ -40,35 +41,22 @@ public class UserAddAction extends Action {
 
 			// 既存ユーザチェック
 			boolean existsUser = dao.existsUser(userBean.getId());
-			UserBean user = (UserBean) session.getAttribute("user");
 
 			if (existsUser) {
-
-				request.setAttribute(
-						"errMessage",
+				return error(
+						request,
+						session,
 						"入力したユーザーIDは、すでに登録済みです。");
-
-				System.out.println("チェック");
-
-				LoginManager.logout(user.getId());
-				session.invalidate();
-
-				return "error/login-error.jsp";
 			}
 
 			// 登録処理
-			boolean result = dao.updateUser(userBean);
+			boolean result = dao.insertUser(userBean);
 
 			if (!result) {
-
-				request.setAttribute(
-						"errMessage",
-						"データベースエラーが発生しました。");
-
-				LoginManager.logout(user.getId());
-				session.invalidate();
-
-				return "error/login-error.jsp";
+				return error(
+						request,
+						session,
+						"データベースでエラーが発生しました。");
 			}
 
 			session.invalidate();
@@ -76,37 +64,37 @@ public class UserAddAction extends Action {
 			return "signup/user-success.jsp";
 
 		} catch (SQLException e) {
-			UserBean user = (UserBean) session.getAttribute("user");
 			e.printStackTrace();
-
-			request.setAttribute(
-					"errMessage",
+			return error(
+					request,
+					session,
 					"データベースエラーが発生しました。");
-
-			if (session != null) {
-				session.invalidate();
-			}
-
-			LoginManager.logout(user.getId());
-
-			return "error/login-error.jsp";
-
 		} catch (Exception e) {
-			UserBean user = (UserBean) session.getAttribute("user");
 			e.printStackTrace();
-
-			request.setAttribute(
-					"errMessage",
+			return error(
+					request,
+					session,
 					"システムエラーが発生しました。");
-
-			if (session != null) {
-				session.invalidate();
-			}
-
-			LoginManager.logout(user.getId());
-
-			return "error/login-error.jsp";
 		}
+
+	}
+
+	private String error(
+			HttpServletRequest request,
+			HttpSession session,
+			String message) {
+
+		request.setAttribute("errMessage", message);
+
+		UserBean user = (UserBean) session.getAttribute("user");
+
+		if (user != null) {
+			LoginManager.logout(user.getId());
+		}
+
+		session.invalidate();
+
+		return "error/login-error.jsp";
 	}
 
 }

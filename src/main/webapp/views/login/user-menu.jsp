@@ -15,7 +15,6 @@
 <body>
 
 <jsp:include page="/views/modal/logoutModal.jsp" />
-<script src="${pageContext.request.contextPath}/views/modal/script.js"></script>
 
 	<c:choose>
 
@@ -42,12 +41,19 @@
 
 			<!-- ログアウト -->
 
-			<button type="button" id="openBtn">ログアウト</button>
+			<button type="button" id="openBtn">
+			<script src="${pageContext.request.contextPath}/views/modal/script.js">
+			</script>
+			ログアウト
+			</button>
 
 		</c:when>
 
 		<c:otherwise>
 			<h1>ログインしてください。</h1>
+			<form action="${pageContext.request.contextPath}/views/login/login-in.jsp">
+				<button type="submit">ログイン画面へ</button>
+			</form>
 		</c:otherwise>
 
 	</c:choose>
